@@ -22,20 +22,13 @@ describe 'appstore::app' do
       should contain_class 'appstore'
 
       should contain_exec('appstore-app-Twitter').with({
-        :command => "open -W '/opt/boxen/appstore.app'",
+        :command => "open -W '/opt/boxen/appstore.app' && [ -d '/Applications/Twitter.app' ]",
         :creates => '/Applications/Twitter.app',
         :environment => [
           'BOXEN_APPSTORE_SOURCE=macappstore://itunes.apple.com/us/app/twitter/id409789998',
           'BOXEN_APPSTORE_ID=appleid@me.com',
           'BOXEN_APPSTORE_PASSWORD=jlaw4life',
         ]
-      })
-
-      should contain_file('appstore-app-Twitter-check').with({
-        :ensure => 'present',
-        :path => '/Applications/Twitter.app',
-        :owner => 'root',
-        :group => 'wheel',
       })
     end
   end
