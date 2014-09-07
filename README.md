@@ -2,7 +2,7 @@
 
 Install apps from the Mac App Store with [Boxen](https://boxen.github.com).
 
-[![Build Status](https://travis-ci.org/boxen/puppet-template.svg?branch=master)](https://travis-ci.org/boxen/puppet-template)
+[![Build Status](https://travis-ci.org/boxen/puppet-appstore.svg?branch=master)](https://travis-ci.org/boxen/puppet-appstore)
 
 ## Usage
 
