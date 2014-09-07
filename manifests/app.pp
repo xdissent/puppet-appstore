@@ -26,5 +26,7 @@ define appstore::app(
   file { "appstore-app-${title}-check":
     ensure  => present,
     path    => $app_path,
+    user    => 'root',
+    group   => 'wheel',
   }
 }

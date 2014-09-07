@@ -34,6 +34,8 @@ describe 'appstore::app' do
       should contain_file('appstore-app-Twitter-check').with({
         :ensure => 'present',
         :path => '/Applications/Twitter.app',
+        :user => 'root',
+        :group => 'wheel',
       })
     end
   end
