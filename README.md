@@ -1,60 +1,46 @@
-# Using this Template
+# puppet-appstore
 
-Bootstrap it:
-
-```
-mkdir -p ~/src/boxen/puppet-mynewmodule
-cd ~/src/boxen/puppet-mynewmodule
-git init .
-git remote add template https://github.com/boxen/puppet-template.git
-git fetch template
-git checkout -b master template/master
-```
-
-Now we're ready to make it our own!
-
-```
-script/cibuild
-.bundle/binstubs/rspec-puppet-init
-```
-
-Now you'll need to edit `manifests/init.pp` and `spec/classes/template_spec.rb`
-for your module.
-If your module has other dependencies, be sure to update
-`spec/fixtures/Puppetfile`.
-From then on, you can use `script/cibuild` to run the tests.
-
-When you're ready to push:
-
-```
-git create githubusername/puppet-mynewmodule
-git push origin master
-```
-
-The rest of the README as follows can be used as a template for your module's README.
-
-# Template Puppet Module for Boxen
-
-An example of how we write Puppet modules for Boxen. Replace this
-paragraph with a short explanation of what the heck makes your module
-useful.
-
-A great module has a working travis build
+Install apps from the Mac App Store with [Boxen](https://boxen.github.com).
 
 [![Build Status](https://travis-ci.org/boxen/puppet-template.svg?branch=master)](https://travis-ci.org/boxen/puppet-template)
 
 ## Usage
 
+Define `appstore::appleid` and `appstore::password` in your hiera config:
+
+```yaml
+---
+# /opt/boxen/repo/hiera/users/xdissent.yaml
+
+# App Store credentials:
+appstore::appleid: appleid@me.com
+appstore::password: jlaw4eva
+
+# Optional App Store location:
+appstore::store: us
+```
+
+Add app definitions:
+
 ```puppet
-boxen::example { 'best example ever':
-  salutation => 'fam'
+appstore::app { 'Twitter':
+  source => 'twitter/id409789998', # required
 }
 ```
+
+To find the source ID for an app: open it in the App Store, click the popup
+button to the right of the Install/Installed/Buy/Free button and choose
+"Copy Link".
+
+## Inspiration
+
+[Demonstrate a wholly automated Xcode install](https://gist.github.com/phs/6505382)
+by [Phil Smith](https://github.com/phs)
 
 ## Required Puppet Modules
 
 * `boxen`
-* `anything-else`
+* [`module_data`](https://github.com/ripienaar/puppet-module-data)
 
 ## Development
 
