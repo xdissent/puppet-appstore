@@ -24,6 +24,7 @@ describe 'appstore::app' do
       should contain_exec('appstore-app-Twitter').with({
         :command => "open -W '/opt/boxen/appstore.app' && [ -d '/Applications/Twitter.app' ]",
         :creates => '/Applications/Twitter.app',
+        :timeout => 0,
         :environment => [
           'BOXEN_APPSTORE_SOURCE=macappstore://itunes.apple.com/us/app/twitter/id409789998',
           'BOXEN_APPSTORE_ID=appleid@me.com',
