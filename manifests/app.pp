@@ -13,6 +13,7 @@ define appstore::app(
 
   $path = "/Applications/${title}.app"
   $helper = "${boxen::config::home}/appstore.app"
+  $password = appstore_password()
 
   exec { "appstore-app-${title}":
     command     => "open -W '${helper}' && [ -d '${path}' ]",
@@ -21,7 +22,7 @@ define appstore::app(
     environment => [
       "BOXEN_APPSTORE_SOURCE=macappstore://itunes.apple.com/${appstore::store}/app/${source}",
       "BOXEN_APPSTORE_ID=${appstore::appleid}",
-      "BOXEN_APPSTORE_PASSWORD=${appstore::password}",
+      "BOXEN_APPSTORE_PASSWORD=${password}",
     ]
   }
 }
