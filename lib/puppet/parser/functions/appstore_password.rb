@@ -3,7 +3,7 @@ module Puppet::Parser::Functions
     hiera_password = lookupvar('appstore::password')
     appstore_user = lookupvar('appstore::appleid')
 
-    command = "security -q find-generic-password -w -a #{appstore_user} -s 'Apple App Store' /Users/#{lookupvar('::boxen_user')}/Library/Keychains/login.keychain"
+    command = "security -q find-generic-password -w -a #{appstore_user} -s 'Apple App Store'"
 
     if [:undefined, :undef, nil].include?(hiera_password)
       begin
