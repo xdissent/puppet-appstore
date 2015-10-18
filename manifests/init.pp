@@ -20,7 +20,7 @@ class appstore(
   $sqlite = '/usr/bin/sqlite3'
   $app_id = 'com.xdissent.boxen.appstore'
   $svc    = 'kTCCServiceAccessibility'
-  $insert = "INSERT OR REPLACE INTO access VALUES ('${svc}', '${app_id}', 0, 1, 0, NULL);"
+  $insert = "INSERT OR REPLACE INTO access VALUES ('${svc}', '${app_id}', 0, 1, 0, NULL, NULL);"
   $select = "SELECT client FROM access WHERE allowed=1 AND client='${app_id}';"
 
   exec { 'appstore-accessibility':
